@@ -1,0 +1,92 @@
+*{box-sizing: border-box;
+    margin: 0;
+    
+}
+
+body{
+    margin: 0;
+    font-family: Nunito Sans, sans-serif;
+    background-color: #121212;
+    color: #fff;
+}
+
+.dark-mode {
+    background-color: #fff;
+    color: #121212;
+}
+
+main{
+    padding: 24px;
+}
+
+.header-content {
+    box-shadow: 0 2px 4px rgba(19, 3, 3, 0.744) ;
+}
+
+.header-content {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin-inline: auto;
+    padding-inline: 24px;
+}
+
+.title {
+    font-weight: 800;
+}
+
+.countries-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    max-width: 1200px;
+    gap: 20px;
+    padding: 20px;
+    margin-inline: auto;
+}
+
+.country-card {
+    display:block;
+    color: inherit;
+    text-decoration: none;
+    font: inherit;
+    cursor: pointer;
+    width: 250px;
+    border-radius: 8px;
+    
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.2s ease-in-out;
+}
+
+.country-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.country-card img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+}
+
+.country-info {
+    padding: 16px;
+}
+
+.country-name {
+    margin: 0 0 8px;
+    font-size: 18px;
+}
+
+/* Loading Animation 
+
+#loading {
+position: fixed;
+width: 100%;
+height: 100vh;
+background: #fff url('/wating.gif') no-repeat center center;
+z-index: 9999;
+pointer-events: none;
+cursor: pointer;
+}
+*/
