@@ -1,19 +1,22 @@
 # Where in the World?
 
-Where in the World? is a responsive country browser built with HTML, CSS, and vanilla JavaScript. It loads country data from the [REST Countries API](https://restcountries.com/) and lets users open a detailed view for each country.
+Where in the World? is a responsive country browser built with HTML, CSS, and JavaScript. It loads country data from the [REST Countries API](https://restcountries.com/) and lets users open a detailed view for each available country.
 
 ## Features
 
 - Displays countries in a responsive card grid
 - Shows each country's flag, official name, population, region, and capital
-- Provides a detailed country page with native name, subregion, domains, currencies, languages, and neighboring countries
+- Provides a detailed country page with native name, subregion, top-level domain, currencies, languages, and neighboring countries
 - Links neighboring countries to their own detail pages
 - Includes a light/dark theme toggle
 - Uses responsive layouts for desktop and mobile screens
+- Excludes Pakistan from the listing and country detail results
+
+The application does not currently include search, filtering, sorting, or pagination controls.
 
 ## Getting started
 
-This project has no build step or package dependencies.
+This project has no build step or package-manager dependencies; it uses browser JavaScript and CDN-hosted libraries/assets.
 
 1. Clone the repository:
 
@@ -30,7 +33,8 @@ This project has no build step or package dependencies.
 
 3. Open [http://localhost:8000](http://localhost:8000) in a browser.
 
-Opening `index.html` directly may work in some browsers, but a local server is recommended for consistent API and asset loading.
+Open a country detail page by selecting a country card, or directly use
+`country.html?name=France` with a URL-encoded country name.
 
 ## Project structure
 
@@ -38,7 +42,7 @@ Opening `index.html` directly may work in some browsers, but a local server is r
 .
 ├── index.html       # Country listing page
 ├── country.html     # Country detail page
-├── script.js        # Country listing API request and theme toggle
+├── script.js        # Country listing API request, loading state, and theme toggle
 ├── country.js       # Country detail and border-country rendering
 ├── style.css        # Shared and listing-page styles
 ├── country.css      # Country detail-page styles
@@ -54,7 +58,7 @@ The application requests data from REST Countries at runtime:
 - `https://restcountries.com/v3.1/name/{country}?fullText=true`
 - `https://restcountries.com/v3.1/alpha?codes={borders}&fields=name`
 
-An internet connection is required to load country data and external fonts/icons.
+An internet connection is required to load country data, external fonts/icons, and jQuery from their CDNs.
 
 ## Browser support
 
