@@ -1,64 +1,72 @@
 # Where in the World?
 
-Where in the World? is a responsive country browser built with HTML, CSS, and vanilla JavaScript. It loads country data from the [REST Countries API](https://restcountries.com/) and lets users open a detailed view for each country.
+A small, client-side country browser made with HTML, CSS, and JavaScript. The
+pages fetch country data from [REST Countries](https://restcountries.com/) when
+they load; there is no local country dataset.
 
-## Features
+## What currently works
 
-- Displays countries in a responsive card grid
-- Shows each country's flag, official name, population, region, and capital
-- Provides a detailed country page with native name, subregion, domains, currencies, languages, and neighboring countries
-- Links neighboring countries to their own detail pages
-- Includes a light/dark theme toggle
-- Uses responsive layouts for desktop and mobile screens
+- The home page renders a grid of countries with a flag, official name,
+  population, region, and capital.
+- Selecting a card opens `country.html?name=...`.
+- The detail page shows the native name, population, region, subregion, capital,
+  top-level domain, currencies, languages, and border countries.
+- Border-country names link to their own detail pages.
+- The button toggles the page between the two available color themes.
+- The grid adapts to the available viewport width.
 
-## Getting started
+## Current limitations
 
-This project has no build step or package dependencies.
+These are limitations of the current implementation, not planned features:
 
-1. Clone the repository:
+- There is no search, region filter, pagination, caching, or offline support.
+- `Pakistan` is deliberately removed from both listing and detail results.
+- Data loading errors are only written to the browser console; the page does
+  not show an error message or retry control.
+- Country data, flag images, Font Awesome, and the Nunito Sans font all require
+  network access.
+- The project has no automated tests, build process, or package manager
+  configuration.
 
-   ```bash
-   git clone https://github.com/def-manish/Flag-Application.git
-   cd Flag-Application
-   ```
+## Run locally
 
-2. Serve the project with a local web server. For example, with Python:
+The project is static, so no installation is needed. A local web server is
+recommended because both pages make runtime API requests.
 
-   ```bash
-   python3 -m http.server 8000
-   ```
+```bash
+git clone https://github.com/def-manish/Flag-Application.git
+cd Flag-Application
+python3 -m http.server 8000
+```
 
-3. Open [http://localhost:8000](http://localhost:8000) in a browser.
+Open <http://localhost:8000> in a modern browser. Stop the server with
+`Ctrl+C`.
 
-Opening `index.html` directly may work in some browsers, but a local server is recommended for consistent API and asset loading.
-
-## Project structure
+## Files
 
 ```text
 .
 ├── index.html       # Country listing page
 ├── country.html     # Country detail page
-├── script.js        # Country listing API request and theme toggle
-├── country.js       # Country detail and border-country rendering
+├── script.js        # Listing API request and theme toggle
+├── country.js       # Detail and border-country rendering
 ├── style.css        # Shared and listing-page styles
 ├── country.css      # Country detail-page styles
 └── img/
-    └── wating.gif   # Loading image asset
+    └── wating.gif   # Loading asset
 ```
 
-## API usage
+## REST Countries requests
 
-The application requests data from REST Countries at runtime:
+The JavaScript makes these requests at runtime:
 
-- `https://restcountries.com/v3.1/all?fields=name,capital,region,population,flags`
-- `https://restcountries.com/v3.1/name/{country}?fullText=true`
-- `https://restcountries.com/v3.1/alpha?codes={borders}&fields=name`
+- `GET /v3.1/all?fields=name,capital,region,population,flags`
+- `GET /v3.1/name/{country}?fullText=true`
+- `GET /v3.1/alpha?codes={borders}&fields=name`
 
-An internet connection is required to load country data and external fonts/icons.
-
-## Browser support
-
-Use a modern browser with support for `fetch`, `URLSearchParams`, template literals, and CSS Grid/Flexbox.
+The API response is not bundled or modified beyond removing Pakistan from the
+displayed results. The application expects a browser with `fetch`,
+`URLSearchParams`, template literals, and CSS Grid/Flexbox support.
 
 ## License
 
